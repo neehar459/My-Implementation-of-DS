@@ -1,7 +1,7 @@
-public class DLL{
+public class SLL{
 
 	private int size;
-	private DLLNode head;
+	private SLLNode head;
 	
 	public void setSize(int size){
 		this.size = size;
@@ -11,18 +11,18 @@ public class DLL{
 		return this.size;
 	}
 	
-	public void setHead(DLLNode sNode){
+	public void setHead(SLLNode sNode){
 		this.head = sNode;
 	}
 	
-	public DLLNode getHead(){
+	public SLLNode getHead(){
 		return this.head;
 	}
 	
-	public DLL(){
+	public SLL(){
 	}
 	
-	public DLL(int size){
+	public SLL(int size){
 		this.size = size;
 	}
 	
@@ -36,14 +36,14 @@ public class DLL{
 	}
 	
 	// add element to the left of the list
-	public DLLNode addFirst(int value){
-		DLLNode sNode = new DLLNode(value);
+	public SLLNode addFirst(int value){
+		SLLNode sNode = new SLLNode(value);
 		if(size ==0){
 			this.setHead(sNode);
 			this.getHead().setNext(null);
 			size++;
 		}else{
-			DLLNode tempHead = this.getHead();
+			SLLNode tempHead = this.getHead();
 			sNode.setNext(tempHead);
 			this.setHead(sNode);
 			size++;
@@ -54,7 +54,7 @@ public class DLL{
 	// add Element at a corresponding position to the list
 	public void add(int index, int value){
 		int loopCounter=1;
-		DLLNode toInsert = new DLLNode(value);
+		SLLNode toInsert = new SLLNode(value);
 		if(index<0){
 			throw new IllegalArgumentException("List position cannot be negative.");
 		}else if(index==1){
@@ -63,9 +63,9 @@ public class DLL{
 		else if(index == this.size){
 			this.addLast(value);
 		}else{
-		DLLNode toIterate = this.getHead();
+		SLLNode toIterate = this.getHead();
 		do{
-		DLLNode beforeNext = toIterate.getNext(); 
+		SLLNode beforeNext = toIterate.getNext(); 
 		if((loopCounter+1)==index){
 		toIterate.setNext(toInsert);
 		toIterate.getNext().setNext(beforeNext);
@@ -79,14 +79,14 @@ public class DLL{
 	}
 	
 	// add Element to the last of the list
-	public DLLNode addLast(int value){
-		DLLNode sNode = new DLLNode(value);
+	public SLLNode addLast(int value){
+		SLLNode sNode = new SLLNode(value);
 		if(size ==0){
 			this.setHead(sNode);
 			this.getHead().setNext(null);
 			size++;
 		}else{
-			DLLNode toIterate = this.getHead();
+			SLLNode toIterate = this.getHead();
 			do{
 				if(null==toIterate.getNext()){
 				toIterate.setNext(sNode);
@@ -115,7 +115,7 @@ public class DLL{
 	public int getLast(){
 		int toReturn = -1;
 		int loopCounter=1;
-		DLLNode toIterate = this.getHead();
+		SLLNode toIterate = this.getHead();
 		if(this.size==0){
 			throw new IllegalArgumentException("List is Empty. Cannot retrieve first element.");
 		}else{
@@ -135,7 +135,7 @@ public class DLL{
 		if(index <0){
 			throw new IllegalArgumentException(" Index cannot  be less than 0.");
 		}else{
-			DLLNode iterNode = this.getHead();
+			SLLNode iterNode = this.getHead();
 			do{
 			if(iteratorIndex == index){
 				toReturn = iterNode.getValue();
@@ -151,7 +151,7 @@ public class DLL{
 	public boolean contains(int value){
 		boolean status = false;
 		int loopCounter=1;
-		DLLNode toIterate = this.getHead();
+		SLLNode toIterate = this.getHead();
 		do{
 		if(toIterate.getValue()==value){
 		status = true;
@@ -166,7 +166,7 @@ public class DLL{
 	public int indexOf(int value){
 		int index=-1;
 		int loopCounter=1;
-		DLLNode toIterate = this.getHead();
+		SLLNode toIterate = this.getHead();
 		do{
 		if(toIterate.getValue()==value){
 		index = loopCounter;
@@ -182,7 +182,7 @@ public class DLL{
 	public int lastIndexOf(int value){
 	int index =-1;
 	int loopCounter=1;
-		DLLNode toIterate = this.getHead();
+		SLLNode toIterate = this.getHead();
 		do{
 		if(toIterate.getValue()==value){
 		index = loopCounter;
@@ -206,12 +206,12 @@ public class DLL{
 	}
 	
 	// to display the LinkedList
-	public void displayDLL(){
+	public void displaySLL(){
 		System.out.println("----------------- Displaying single Linked List -----------------");
 		if(size ==0){
 		System.out.println("List is empty. No element to display");	
 		}else{
-			DLLNode iteratingPointer = this.getHead();
+			SLLNode iteratingPointer = this.getHead();
 			do{
 				System.out.print(iteratingPointer.getValue() +" ---> ");
 				iteratingPointer = iteratingPointer.getNext();
@@ -221,8 +221,8 @@ public class DLL{
 	}
 	
 	// to delete head node of the linked list
-	public DLLNode deleteFirst(){
-		DLLNode toReturn = null;
+	public SLLNode deleteFirst(){
+		SLLNode toReturn = null;
 		if(size==0){
 			throw new IllegalArgumentException("List is already Empty. Cannot delete more");
 		}else{
@@ -234,12 +234,12 @@ public class DLL{
 	}
 	
 	// to delete Last Node of the linked list
-	public DLLNode deleteLast(){
-		DLLNode toReturn = null;
+	public SLLNode deleteLast(){
+		SLLNode toReturn = null;
 		if(size==0){
 			throw new IllegalArgumentException("List is already Empty. Cannot delete more");
 		}else{
-			DLLNode toIterate = this.getHead();
+			SLLNode toIterate = this.getHead();
 			do{
 			if(null==toIterate.getNext().getNext()){
 			toIterate.setNext(null);
@@ -252,8 +252,8 @@ public class DLL{
 	}
 	
 	// to delete Node at given index
-	public DLLNode delete(int index){
-		DLLNode deletedNode = null;
+	public SLLNode delete(int index){
+		SLLNode deletedNode = null;
 		int loopCounter=1;
 		if(this.size==0){
 			throw new IllegalArgumentException("List is already empty. Cannot delete more");
@@ -265,7 +265,7 @@ public class DLL{
 			this.deleteLast();
 		}
 		else{
-		DLLNode toIterate = this.getHead();
+		SLLNode toIterate = this.getHead();
 		do{
 		if((loopCounter+1)==index){
 		toIterate.setNext(toIterate.getNext().getNext());
@@ -280,55 +280,55 @@ public class DLL{
 	}
 	
 	public static void main(String[] args){
-		DLL DLL = new DLL();
-		DLL.displayDLL();
-		DLL.addFirst(1);
-		DLL.addFirst(2);
-		DLL.addFirst(3);
-		DLL.addFirst(4);
-		DLL.addLast(5);
-		DLL.addLast(6);
-		DLL.addLast(7);
-		DLL.addLast(8);
-		System.out.println("List Size after adding all elements: "+DLL.getSize());
-		DLL.displayDLL();
-		DLL.deleteFirst();
-		System.out.println("List Size after delete first : "+DLL.getSize());
-		DLL.displayDLL();
-		DLL.deleteLast();
-		System.out.println("List Size after delete last : "+DLL.getSize());
-		DLL.displayDLL();
-		//DLL.delete(-1);
-		System.out.println("List Size after deleting element at index -1: "+DLL.getSize());
-		DLL.displayDLL();
-		DLL.delete(5);
-		System.out.println("List Size after deleting element at index 5: "+DLL.getSize());
-		DLL.displayDLL();
-		DLL.add(2,23);
-		System.out.println("List Size after add(2,23): "+DLL.getSize());
-		DLL.displayDLL();
-		DLL.add(4,44);
-		DLL.add(5,2);
-		System.out.println("List Size after add(5,2): "+DLL.getSize());
-		DLL.displayDLL();
-		System.out.println(DLL.contains(2));
-		System.out.println("First Element : "+DLL.getFirst());
-		System.out.println("Last Element : "+DLL.getLast());
-		System.out.println("Index of element : "+DLL.indexOf(2));
-		System.out.println("Index of element : "+DLL.lastIndexOf(2));
-		System.out.println("List Size before clear : "+DLL.getSize());
-		DLL.clear();
-		//DLL.deleteFirst();
-		System.out.println("List Size : "+DLL.getSize());
-		DLL.displayDLL();
+		SLL SLL = new SLL();
+		SLL.displaySLL();
+		SLL.addFirst(1);
+		SLL.addFirst(2);
+		SLL.addFirst(3);
+		SLL.addFirst(4);
+		SLL.addLast(5);
+		SLL.addLast(6);
+		SLL.addLast(7);
+		SLL.addLast(8);
+		System.out.println("List Size after adding all elements: "+SLL.getSize());
+		SLL.displaySLL();
+		SLL.deleteFirst();
+		System.out.println("List Size after delete first : "+SLL.getSize());
+		SLL.displaySLL();
+		SLL.deleteLast();
+		System.out.println("List Size after delete last : "+SLL.getSize());
+		SLL.displaySLL();
+		//SLL.delete(-1);
+		System.out.println("List Size after deleting element at index -1: "+SLL.getSize());
+		SLL.displaySLL();
+		SLL.delete(5);
+		System.out.println("List Size after deleting element at index 5: "+SLL.getSize());
+		SLL.displaySLL();
+		SLL.add(2,23);
+		System.out.println("List Size after add(2,23): "+SLL.getSize());
+		SLL.displaySLL();
+		SLL.add(4,44);
+		SLL.add(5,2);
+		System.out.println("List Size after add(5,2): "+SLL.getSize());
+		SLL.displaySLL();
+		System.out.println(SLL.contains(2));
+		System.out.println("First Element : "+SLL.getFirst());
+		System.out.println("Last Element : "+SLL.getLast());
+		System.out.println("Index of element : "+SLL.indexOf(2));
+		System.out.println("Index of element : "+SLL.lastIndexOf(2));
+		System.out.println("List Size before clear : "+SLL.getSize());
+		SLL.clear();
+		//SLL.deleteFirst();
+		System.out.println("List Size : "+SLL.getSize());
+		SLL.displaySLL();
 	}
 }
 
-class DLLNode{
+class SLLNode{
 	private int value;
-	private DLLNode next;
+	private SLLNode next;
 	
-	public DLLNode(int value){
+	public SLLNode(int value){
 		this.value = value;
 	}
 	
@@ -340,11 +340,11 @@ class DLLNode{
 		return this.value;
 	}
 	
-	public void setNext(DLLNode sNode){
+	public void setNext(SLLNode sNode){
 		this.next = sNode;
 	}
 	
-	public DLLNode getNext(){
+	public SLLNode getNext(){
 		return this.next;
 	}
 }
